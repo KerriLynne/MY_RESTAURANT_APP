@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+    require "pry"
 
     get '/signup' do
         erb :"/users/signup"
     end
 
     post '/users' do
+        binding.pry
         if params[:password] == params[:password_confirm] 
             params.delete(:password_confirm)
             user = User.new(params)

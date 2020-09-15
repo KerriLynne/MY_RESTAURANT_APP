@@ -1,6 +1,8 @@
 class RestaurantsController < ApplicationController
+    require "pry"
 
     get '/restaurants' do
+        binding.pry
         @restaurants = current_user.restaurants
         erb :"/restaurants/index"
     end

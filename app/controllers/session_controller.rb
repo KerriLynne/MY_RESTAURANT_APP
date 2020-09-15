@@ -1,10 +1,12 @@
 class SessionController < ApplicationController
+    require "pry"
 
     get '/login' do
         erb :"/session/login"
     end
     
     post '/login' do 
+        binding.pry
         #get the user attempting to login
         user = User.find_by(username: params[:username])
         # authenticate user with password
@@ -13,7 +15,7 @@ class SessionController < ApplicationController
             session[:user_id] = user.id
             redirect "/restaurants"
         else
-            redirect "/login"
+            redirect "/session/login"
             # if valid- decide where to go
             # else redirect to login page
         end
