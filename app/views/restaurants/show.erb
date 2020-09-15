@@ -1,0 +1,7 @@
+<h1> <%= current_user.username %>'s Restaurants:</h1>
+
+<ul>
+<% @restaurants.each do |restaurant| %>
+    <a href="/restaurants/<%= restaurant.id %>" ><li> <%= restaurant.name %> </li></a>
+    <% end %>
+    </ul>
