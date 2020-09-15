@@ -5,11 +5,16 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        if params[:password] == params[:password_confirm]
+        if params[:password] == params[:password_confirm] 
             params.delete(:password_confirm)
-            user = User.create(params)
-            session[:user_id] = user.id
-            redirect "/restaurants"
+            user = User.new(params)
+            if user.save
+                session[:user_id] = user.id
+                redirect "/restaurants"
+            else
+                @errors = user.errors.full_messages
+                erb :"/users/signup"
+            end
         else
             redirect "/signup"
         end

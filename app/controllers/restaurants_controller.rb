@@ -19,7 +19,8 @@ class RestaurantsController < ApplicationController
     end
 
     post '/restaurants' do
-        restaurant = Restaurant.create(params[:restaurant])
+        restaurant = current_user.restaurants.create(params[:restaurant]) ##only if it's nested under another hash
+        # restaurant = Restaurant.create(params[:restaurant])
         redirect "/restaurants/#{restaurant.id}"
     end
 

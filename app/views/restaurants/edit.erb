@@ -1,0 +1,18 @@
+<h1>Edit Restaurant Visit</h1>
+
+<form method="post" action="/restaurants/<%=@restaurant.id%>" >
+    <input type="hidden" name="_method" value="patch" >
+    <label>Restaurant Name:</label>
+    <input type="text" name="restaurant[name]" placeholder="name"> value="<%= @restaurant.name %>" >
+    <label>Cuisine:</label>
+    <input type="text" name="restaurant[cuisine]" placeholder="cuisine"> value="<%= @restaurant.cuisine %>" >
+    <label>Rating:</label>
+    <input type="text" name="review[num_rating]" placeholder="rating"> value="<%= @review.num_rating %>" >
+    <label>Comment:</label>
+    <input type="text" name="review[comment_rating]" placeholder="comment"> value="<%= @review.comment_rating %>" >
+    <label>Neighborhood:</label>
+    <input type="text" name="restaurant[neighborhood]" placeholder="neighborhood"> value="<%= @restaurant.neighborhood %>" >
+    <label>Date of Visit:</label>
+    <input type="text" name="restaurant[date_of_visit]" placeholder="date"> value="<%= @restaurant.date_of_visit %>" >
+    <input type="submit" name="Edit Restaurant"
+</form>

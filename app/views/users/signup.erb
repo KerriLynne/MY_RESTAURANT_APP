@@ -1,0 +1,16 @@
+<h1>Sign up</h1>
+<% if @errors %>
+    <% @errors.each do |e| %>
+    <p> <%= e %> </p>
+    <% end %>
+<% end %>
+
+<form method="post" action="/users" >
+    <label>Username:</label>
+    <input type="text" name="username" placeholder="Username">
+    <label>Password:</label>
+    <input type="password" name="password" placeholder="Password">
+    <label>Password Confirmation:</label>
+    <input type="password" name="password_confirmation" placeholder="Password conf">
+    <input type="submit" name="Login"
+    </form>
