@@ -3,26 +3,26 @@
 <form method="post" action="/restaurants/<%=@restaurant.id%>" >
     <input type="hidden" name="_method" value="patch" >
     <label>Restaurant Name:</label>
-    <input type="text" name="restaurant[name]" placeholder="name"> <%= @restaurant.name %> 
+    <input type="text" name="restaurant[name]" placeholder="Name"> <%= @restaurant.name %> 
     <br>
     <br>
     <label>Cuisine:</label>
-    <input type="text" name="restaurant[cuisine]" placeholder="cuisine"> <%= @restaurant.cuisine %> 
+    <input type="text" name="restaurant[cuisine]" placeholder="Cuisine"> <%= @restaurant.cuisine %> 
     <br>
     <br>
-    <label>Rating:</label>
-    <input type="text" name="review[num_rating]" placeholder="rating"> <%= @review.num_rating %>
+    <label>Rating out of 10:</label>
+    <input type="text" name="review[num_rating]" placeholder="Rating"> <%= @review.num_rating %>
     <br>
     <br>
     <label>Comment:</label>
-    <input type="text" name="review[comment_rating]" placeholder="comment"> <%= @review.comment_rating %>
+    <input type="text" name="review[comment_rating]" placeholder="Comment"> <%= @review.comment_rating %>
     <br>
     <br>
     <label>Neighborhood:</label>
-    <input type="text" name="restaurant[neighborhood]" placeholder="neighborhood"> <%= @restaurant.neighborhood %>
+    <input type="text" name="restaurant[neighborhood]" placeholder="Neighborhood"> <%= @restaurant.neighborhood %>
     <br>
     <br>
     <label>Date of Visit:</label>
-    <input type="text" name="restaurant[date_of_visit]" placeholder="date"> <%= @restaurant.date_of_visit %>
+    <input type="text" name="restaurant[date_of_visit]" placeholder="Date"> <%= @restaurant.date_of_visit %>
     <input type="submit" name="Edit Restaurant">
 </form>

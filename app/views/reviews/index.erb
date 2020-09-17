@@ -1,0 +1,7 @@
+<h1> <%= current_user.username %>'s Reviews:</h1>
+
+<ul>
+<% @reviews.each do |review| %>
+    <% review.id %> <li> <%= review.num_rating %>. "<%= review.comment_rating %>" </li>
+    <% end %>
+    </ul>

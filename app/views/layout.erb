@@ -18,25 +18,35 @@
       <nav class="menu"
       <% if logged_in? %>
         <ul>
+        <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
           <li><a href="/restaurants">All Restaurants</a></li>
           <li><a href="/restaurants/new">New Restaurant</a></li>
+          <li><a href="/reviews">My Reviews</a></li>
+          <br>
           <form method="post" action="/logout">
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="Logout">
           </form>
       <% else %>
-          <li><a href="/signup">Sign Up</a></li> 
-          <li><a href="/login">Log In</a></li>
+      <div class="login-title"> <h1>My Restaurant App</h1>
+          <br>
+          <li><a href="/signup" class="myButton">Sign Up</a></li> 
+          <br>
+          <li><a href="/login" class="myButton">Log In</a></li>
         </ul>
         <% end %>
       </nav>
-
+   
 
         <%= yield %>
 
       <footer class="branding">
         <small>&copy; 2020 <strong>MyRestaurantApp</strong></small>
       </footer>
+      </div>
+      </div>
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
