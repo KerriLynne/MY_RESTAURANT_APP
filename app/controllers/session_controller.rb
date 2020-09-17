@@ -6,16 +6,16 @@ class SessionController < ApplicationController
     end
     
     post '/login' do 
-        binding.pry
         #get the user attempting to login
         user = User.find_by(username: params[:username])
         # authenticate user with password
-        if user && user.authenticate(params[:password_digest])
+        if user && user.authenticate(params[:password])
             # set our user session
             session[:user_id] = user.id
             redirect "/restaurants"
         else
-            redirect "/session/login"
+            # binding.pry
+            redirect "/login"
             # if valid- decide where to go
             # else redirect to login page
         end

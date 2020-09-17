@@ -2,7 +2,6 @@ class RestaurantsController < ApplicationController
     require "pry"
 
     get '/restaurants' do
-        binding.pry
         @restaurants = current_user.restaurants
         erb :"/restaurants/index"
     end
@@ -14,6 +13,7 @@ class RestaurantsController < ApplicationController
     get 'restaurants/:id' do
         if session[:user_id]
             find_restaurant
+            # @reviews = Review.find_by(id:params[:id]) #added
             erb :"/restaurants/show"
         else
             redirect "/"
@@ -28,13 +28,14 @@ class RestaurantsController < ApplicationController
 
     get "/restaurants/:id/edit" do
         find_restaurant
+        @review = Review.find_by(id:params[:id])
         erb :"/restaurants/edit"
     end
 
     patch "/restaurants/:id" do
         find_restaurant
         if current_user.id = restaurant.user_id ## do I need to add user_id to restaurants? Should I use review.user_id instead?
-            @restaurants.update(params[:restaurants])
+            @restaurants.update(params[:restaurants])  #should this instance variable have an s?
             redirect "/restaurants/#{@restaurant.id}"
         end
     end

@@ -6,9 +6,9 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        binding.pry
-        if params[:password] == params[:password_confirm] 
-            params.delete(:password_confirm)
+        if params[:password] == params[:confirm_password] 
+            params.delete(:confirm_password)
+            params.delete("Sign Up")
             user = User.new(params)
             if user.save
                 session[:user_id] = user.id
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
                 erb :"/users/signup"
             end
         else
+            # binding.pry
             redirect "/signup"
         end
     end
