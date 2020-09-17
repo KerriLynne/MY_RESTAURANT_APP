@@ -1,0 +1,17 @@
+<h2><%= @restaurant.name %> </h2>
+<h3>Cuisine Type: <%= @restaurant.cuisine %> </h3>
+<h3>Rating: <%= @review.num_rating %> </h3>
+<h3>Comments: <%= @review.comment_rating %> </h3>
+<h3>Neighborhood: <%= @restaurant.neighborhood %> </h3>
+<p>Visited: <%=@restaurant.date_of_visit %></p>
+
+<a href=<%="/reviews/#{@review.id}/edit"%>> <button> Edit Your Review </button></a>
+<br>
+<br>
+<form method="post" action="/restaurants/<%=@restaurant.id%>" >
+    <input type="hidden" name="_method" value="delete" >
+    <input type="submit" value="Delete Your Review" >
+</form>
+
+##this should just list the chosen restaurant and your reviews with 
+## edit and delete options for THAT review.

@@ -1,14 +1,14 @@
-<h2><%= @restaurant.name %> </h2>
-<h3><%= @restaurant.cuisine %> </h3>
-<h3><%= @review.num_rating %> </h3>
-<h3><%= @review.comment_rating %> </h3>
-<h3><%= @restaurant.neighborhood %> </h3>
-<p>Visited: <%=@restaurant.date_of_visit %></p>
+<h2><%= @restaurant.name %> Average Rating: </h2>
+<h4>Cuisine Type: <%= @restaurant.cuisine %> </h4>
+<h4>Neighborhood: <%= @restaurant.neighborhood %> </h4>
+<br>
+<h3>All Reviews:</h3>
+<li><p>Visited: <%=@restaurant.date_of_visit %>
+Rating: <%= @review.num_rating %>
+Comments: <%= @review.comment_rating %></p></li>
 
-<a href=<%="/restaurants/#{@restaurant.id}/edit"%>> <button> Edit </button></a>
+<a href=<%="/restaurants/#{@restaurant.id}/reviews"%>> <button> Add Your Review </button></a>
 <br>
 <br>
-<form method="post" action="/restaurants/<%=@restaurant.id%>" >
-    <input type="hidden" name="_method" value="delete" >
-    <input type="submit" value="Delete" >
-</form>
+
+## this should list the chosen restaurant and all those reviews

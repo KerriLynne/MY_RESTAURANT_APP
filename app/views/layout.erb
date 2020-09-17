@@ -24,11 +24,10 @@
           <li><a href="/restaurants">All Restaurants</a></li>
           <li><a href="/restaurants/new">New Restaurant</a></li>
           <li><a href="/reviews">My Reviews</a></li>
-          <br>
-          <form method="post" action="/logout">
+          <li> <form method="post" action="/logout">
             <input type="hidden" name="_method" value="delete">
             <input type="submit" value="Logout">
-          </form>
+          </form></li>
       <% else %>
       <div class="login-title"> <h1>My Restaurant App</h1>
           <br>

@@ -1,0 +1,13 @@
+<h1>Add your review for <%= @restaurant.name %>!</h1>
+
+<form method="post" action="/restaurants/<%=@restaurant.id%>/reviews" >
+    <label>Rating out of 10:</label>
+    <input type="text" name="review[num_rating]" placeholder="Rating" >
+    <br>
+    <br>
+    <label>Comment:</label>
+    <input type="text" name="review[comment_rating]" placeholder="Comment" >
+    <br>
+    <br>
+    <input type="submit" name="Add Review">
+</form>
