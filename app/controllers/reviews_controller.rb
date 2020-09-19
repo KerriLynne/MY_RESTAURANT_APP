@@ -2,8 +2,12 @@ class ReviewsController < ApplicationController
     require "pry"
 
     get '/reviews' do
+        # binding.pry
         @reviews = current_user.reviews
+        @restaurant = Restaurant.find_by(id:params[:id])
+        # @restaurants = current_user.restaurants
         erb :"/reviews/index"
+        # redirect "/restaurants/#{@restaurant.id}"
     end
 
     get '/reviews/new' do
