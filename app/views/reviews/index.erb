@@ -1,7 +1,17 @@
-<h1> <%= current_user.username %>'s Reviews:</h1>
 
+<h1> <%= current_user.username %>'s Review's:</h1>
+<br>
 <ul>
 <% @reviews.each do |review| %>
-    <% review.id %> <li> Rating: <%= review.num_rating %>. "<%= review.comment_rating %>" </li>
+    <div class="review-container" >
+    <li> <a href="/restaurants/<%= review.restaurant_id %>" ><%= review.restaurant.name %> </a> 
+    Rating: <%= review.num_rating %>. "<%= review.comment_rating %>" 
+    <a href=<%="/reviews/#{review.id}/edit"%>> <button> Edit </button></a></li>
+    <form method="post" action="/reviews/<%=review.id%>" >
+    <input type="hidden" name="_method" value="delete" >
+    <input type="submit" value="Delete" >
+    </form>
+    </div>
     <% end %>
     </ul>
+

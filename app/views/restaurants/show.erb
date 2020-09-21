@@ -1,14 +1,17 @@
-<h2><%= @restaurant.name %> Average Rating: </h2>
+<h2><%= @restaurant.name %> Average Rating: <%=@average %></h2>
 <h4>Cuisine Type: <%= @restaurant.cuisine %> </h4>
 <h4>Neighborhood: <%= @restaurant.neighborhood %> </h4>
 <br>
 <h3>All Reviews:</h3>
-<li><p>Visited: <%=@restaurant.date_of_visit %>
-Rating: <%= @review.num_rating %>
-Comments: <%= @review.comment_rating %></p></li>
-
+<ul>
+<% @reviews.each do |review| %>
+    <li> Rating: <%= review.num_rating %>. "<%= review.comment_rating %>" Visited: <%=@restaurant.date_of_visit %></li> 
+    <% end %>
+    </ul>
+<br>
+<br>
+<br>
 <a href=<%="/restaurants/#{@restaurant.id}/reviews"%>> <button> Add Your Review </button></a>
 <br>
 <br>
 
-## this should list the chosen restaurant and all those reviews

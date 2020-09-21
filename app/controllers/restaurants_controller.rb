@@ -1,10 +1,6 @@
 class RestaurantsController < ApplicationController
     require "pry"
 
-    # get '/restaurants' do
-    #     @restaurants = current_user.restaurants
-    #     erb :"/restaurants/index"
-    # end
 
     get '/restaurants' do
         @restaurants = Restaurant.all
@@ -16,17 +12,23 @@ class RestaurantsController < ApplicationController
     end
 
     post '/restaurants' do
-        restaurant = current_user.restaurants.create(params[:restaurant]) ##only if it's nested under another hash
-        review = restaurant.reviews.first
-        review.update(params[:review])
+        unless restaurant = Restaurant.find_by(name: params[:restaurant][:name])
+            restaurant = current_user.restaurants.create(params[:restaurant]) ##only if it's nested under another hash
+            review = restaurant.reviews.first
+            review.update(params[:review])
+        end
         redirect "/restaurants/#{restaurant.id}"
     end
 
     get '/restaurants/:id' do
-        # binding.pry
-        if session[:user_id]  #need to take this out to see all user reviews?
+        if session[:user_id] 
             find_restaurant
-            @review = Review.find_by(restaurant_id: params[:id]) #added
+            @reviews = @restaurant.reviews
+            counter = 0
+            @reviews.each do |review|
+                counter = review.num_rating + counter
+            end
+            @average = (counter.to_f/@reviews.size).round(1)
             erb :"/restaurants/show"
         else
             redirect "/"
@@ -36,7 +38,6 @@ class RestaurantsController < ApplicationController
     get "/restaurants/:id/edit" do
         find_restaurant
         @review = Review.find_by(restaurant_id: params[:id])
-        # @review = Review.find_by(id:params[:id])
         erb :"/restaurants/edit"
     end
 

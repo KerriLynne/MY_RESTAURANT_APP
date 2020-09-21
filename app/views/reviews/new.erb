@@ -1,6 +1,6 @@
 <h1>Add your review for <%= @restaurant.name %>!</h1>
-
-<form method="post" action="/restaurants/<%=@restaurant.id%>/reviews" >
+<br>
+<form method="post" action="/reviews/<%=@restaurant.id%>" >
     <label>Rating out of 10:</label>
     <input type="text" name="review[num_rating]" placeholder="Rating" >
     <br>

@@ -2,16 +2,13 @@ class ReviewsController < ApplicationController
     require "pry"
 
     get '/reviews' do
-        # binding.pry
         @reviews = current_user.reviews
         @restaurant = Restaurant.find_by(id:params[:id])
-        # @restaurants = current_user.restaurants
         erb :"/reviews/index"
-        # redirect "/restaurants/#{@restaurant.id}"
     end
 
     get '/reviews/new' do
-        @review = Review.find_by(restaurant_id: params[:id]) #added
+        @review = Review.find_by(restaurant_id: params[:id]) 
         erb :"/reviews/#{@review.id}/new"
     end
 
@@ -19,35 +16,46 @@ class ReviewsController < ApplicationController
         if session[:user_id]
             @review = Review.find_by(restaurant_id: params[:id])
             @restaurant = Restaurant.find_by(id:params[:id])
-            # @review = Review.find_by(id:params[:id]) 
-            # erb :"/reviews/show"  #update
             erb :"/reviews/new" 
         else
             redirect "/"
         end
     end
 
-    # post '/reviews' do
-    #     review = current_user.reviews.create(params[:review]) ##only if it's nested under another hash
-    #     # restaurant = Restaurant.create(params[:restaurant])
-    #     redirect "/reviews/#{review.id}"
-    # end
-
-    post '/restaurants/:id/reviews' do
-        review = current_user.reviews.create(params[:review]) ##only if it's nested under another hash
-        restaurant = review.restaurant
-        # redirect "/restaurants/#{restaurant.id}"
-        redirect "/restaurants"
+    post '/reviews/:restaurant_id' do
+        review = current_user.reviews.create(params[:review])
+        review.update(restaurant_id:params[:restaurant_id])
+        redirect "/restaurants/#{review.restaurant_id}"
     end
 
-    # patch "/restaurants/:id/reviews" do
-    #     @review = Review.find_by(restaurant_id: params[:id])
-    #     if current_user.id = @review.user_id 
-           
-    #         @review.update(params[:reviews])  
-    #         @restaurant = Restaurant.find_by(id:params[:id])
-    #         redirect "/restaurants/#{@restaurant.id}"
-    #     end
-    # end
+    get '/reviews/:id/edit' do
+        find_restaurant
+        @review = Review.find_by(id: params[:id])
+        @restaurant = @review.restaurant
+        erb :"/reviews/edit"
+    end
+
+
+    patch "/reviews/:id/edit" do
+        @review = Review.find_by(id: params[:id])
+        if current_user.id = @review.user_id 
+          
+            @review.update(params[:review])  
+            redirect "/restaurants/#{@review.restaurant.id}"
+        end
+    end
+
+
+    delete "/reviews/:id" do
+        review = Review.find_by(id: params[:id])
+        review.destroy
+        redirect "/reviews"
+    end
+
+    private
+
+    def find_restaurant
+        @restaurant = Restaurant.find_by(id:params[:id])
+    end
 
 end

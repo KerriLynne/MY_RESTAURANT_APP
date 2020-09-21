@@ -1,22 +1,14 @@
-<h1>Edit or Delete your review for <%= @restaurant.name %></h1>
-
-<form method="post" action="/reviews/<%=@review.id%>" >
+<h1>Edit your review for <%= @restaurant.name %></h1>
+<br>
+<form method="post" action="/reviews/<%=@review.id%>/edit" >
     <input type="hidden" name="_method" value="patch" >
     <label>Rating out of 10:</label>
-    <input type="text" name="review[num_rating]" placeholder="Rating"> <%= @review.num_rating %>
+    <input type="text" name="review[num_rating]" placeholder="Rating"> 
     <br>
     <br>
     <label>Comment:</label>
-    <input type="text" name="review[comment_rating]" placeholder="Comment"> <%= @review.comment_rating %>
+    <input type="text" name="review[comment_rating]" placeholder="Comment"> 
     <br>
     <br>
     <input type="submit" value="Edit Review" name="Edit Review" >
-</form>
-
-<a href=<%="/reviews/#{@review.id}/edit"%>> <button> Edit </button></a>
-<br>
-<br>
-<form method="post" action="/reviews/<%=@review.id%>" >
-    <input type="hidden" name="_method" value="delete" >
-    <input type="submit" value="Delete" >
 </form>
