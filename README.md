@@ -15,11 +15,11 @@ This application makes it easy to see reviewed restaurants by all users and also
 
 ## Built With
 
--Sinatra - Framework
--ActiveRecord - Database management
--sqlite3 - Database engine
--bcrypt - Password hasher
--Corneal Gem - generates Sinatra template
+- Sinatra - Framework
+- ActiveRecord - Database management
+- sqlite3 - Database engine
+- bcrypt - Password hasher
+- Corneal Gem - generates Sinatra template
 
 ## Contributing
 
