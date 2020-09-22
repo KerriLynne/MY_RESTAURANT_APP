@@ -1,5 +1,11 @@
 <h2>User Login</h2>
 
+<% if session[:error] %>
+    <%=session[:error]%>
+    <%session.delete(:error)%>
+    <% end %>
+<br>
+<br>
 <form method="Post" action="/login" >
     <label for="username">Username:</label>
     <input type="text" name="username" placeholder="Username">

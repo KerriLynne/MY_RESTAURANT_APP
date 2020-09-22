@@ -13,16 +13,23 @@ class RestaurantsController < ApplicationController
 
     post '/restaurants' do
         unless restaurant = Restaurant.find_by(name: params[:restaurant][:name])
-            restaurant = current_user.restaurants.create(params[:restaurant]) ##only if it's nested under another hash
+            restaurant = current_user.restaurants.new(params[:restaurant])
+            if restaurant.save
+                # binding.pry
+                review = restaurant.reviews.create(params[:review])
+                review.update(user_id: current_user.id)
+            else
+                redirect "/restaurants/new"
+            end
+        end
+        redirect "/restaurants/#{restaurant.id}"
+    end
+
             #check if rest gets successfully created (.valid?) or check if restaurant.save
             ## create the review and then check the review (another if statement) if review.valid? or if review.save
             # if these both didn't successfully go through redirect back to restaurants page
             #look into how you're creating this review?
-            review = restaurant.reviews.first
-            review.update(params[:review])
-        end
-        redirect "/restaurants/#{restaurant.id}"
-    end
+
 
     get '/restaurants/:id' do
         if session[:user_id] 

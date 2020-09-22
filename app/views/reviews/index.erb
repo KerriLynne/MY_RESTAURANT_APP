@@ -5,7 +5,7 @@
 <% @reviews.each do |review| %>
     <div class="review-container" >
     <li> <a href="/restaurants/<%= review.restaurant_id %>" ><%= review.restaurant.name %> </a> 
-    Rating: <%= review.num_rating %>. "<%= review.comment_rating %>" </div>
+    Rating: <%= review.num_rating %>. "<%= review.comment_rating %>" Visited: <%=review.date_of_visit %></div>
     <div class="edit-delete" >
     <a href=<%="/reviews/#{review.id}/edit"%>> <button> <i class="far fa-edit"></i> </button></a></li>
     <form method="post" action="/reviews/<%=review.id%>" >
