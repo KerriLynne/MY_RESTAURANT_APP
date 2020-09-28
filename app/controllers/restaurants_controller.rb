@@ -39,28 +39,6 @@ class RestaurantsController < ApplicationController
         end
     end
 
-    # get "/restaurants/:id/edit" do
-    #     find_restaurant
-    #     @review = Review.find_by(restaurant_id: params[:id])
-    #     erb :"/restaurants/edit"
-    # end
-
-    # patch "/restaurants/:id" do
-    #     find_restaurant
-    #     if current_user.id = @restaurant.user_id 
-           
-    #         @restaurant.update(params[:restaurants])  
-    #         @review = Review.find_by(restaurant_id: params[:id])
-    #         redirect "/restaurants/#{@restaurant.id}"
-    #     end
-    # end
-
-    # delete "/restaurants/:id" do
-    #     find_restaurant
-    #     @restaurant.destroy
-    #     redirect "/restaurants"
-    # end
-
     private
 
     def find_restaurant

@@ -6,11 +6,6 @@ class ReviewsController < ApplicationController
         erb :"/reviews/index"
     end
 
-    # get '/reviews/new' do
-    #     @review = Review.find_by(restaurant_id: params[:id]) 
-    #     erb :"/reviews/#{@review.id}/new"
-    # end
-
     get '/restaurants/:id/reviews' do
         if session[:user_id]
             @review = Review.find_by(restaurant_id: params[:id])
@@ -34,7 +29,6 @@ class ReviewsController < ApplicationController
         erb :"/reviews/edit"
     end
 
-
     patch "/reviews/:id/edit" do
         @review = Review.find_by(id: params[:id])
         if current_user.id = @review.user_id 
@@ -43,7 +37,6 @@ class ReviewsController < ApplicationController
             redirect "/restaurants/#{@review.restaurant.id}"
         end
     end
-
 
     delete "/reviews/:id" do
         review = Review.find_by(id: params[:id])
