@@ -5,7 +5,7 @@
 <h3>All Reviews:</h3>
 <ul>
 <% @reviews.each do |review| %>
-    <li> Rating: <%= review.num_rating %>. "<%= review.comment_rating %>" Visited: <%=review.date_of_visit %></li> 
+    <li> Rating: <%= review.num_rating.round(1) %>. "<%= review.comment_rating %>" Visited: <%=review.date_of_visit %></li> 
     <% end %>
     </ul>
 <br>

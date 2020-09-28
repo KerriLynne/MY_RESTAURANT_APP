@@ -14,7 +14,6 @@ class SessionController < ApplicationController
             session[:user_id] = user.id
             redirect "/restaurants"
         else
-            # binding.pry
             session[:error] = "Username and/or password invalid.  Try logging in again."
             redirect "/login"
             # if valid- decide where to go

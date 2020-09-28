@@ -2,16 +2,14 @@ class ReviewsController < ApplicationController
     require "pry"
 
     get '/reviews' do
-        # binding.pry
         @reviews = current_user.reviews
-        # @restaurant = Restaurant.find_by(id:params[:id])
         erb :"/reviews/index"
     end
 
-    get '/reviews/new' do
-        @review = Review.find_by(restaurant_id: params[:id]) 
-        erb :"/reviews/#{@review.id}/new"
-    end
+    # get '/reviews/new' do
+    #     @review = Review.find_by(restaurant_id: params[:id]) 
+    #     erb :"/reviews/#{@review.id}/new"
+    # end
 
     get '/restaurants/:id/reviews' do
         if session[:user_id]
@@ -24,10 +22,8 @@ class ReviewsController < ApplicationController
     end
 
     post '/reviews/:restaurant_id' do
-      
         review = current_user.reviews.create(params[:review])
         review.update(restaurant_id:params[:restaurant_id])
-        # binding.pry
         redirect "/restaurants/#{review.restaurant_id}"
     end
 

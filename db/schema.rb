@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200917215828) do
+ActiveRecord::Schema.define(version: 20200928212831) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20200917215828) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "num_rating"
     t.string  "comment_rating"
     t.integer "user_id"
     t.integer "restaurant_id"
     t.string  "date_of_visit"
+    t.float   "num_rating"
   end
 
   create_table "users", force: :cascade do |t|
